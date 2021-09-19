@@ -1,0 +1,15 @@
+create database zhihu default charset utf8;
+create user 'naotan'@'%' identified by 'naotan';
+grant all privileges on zhihu.* to 'hellokitty'@'%';
+flush privileges;
+
+use zhihu;
+create table `tb_explore`
+(
+	`id` integer auto_increment,
+    `url` varchar(1024) not null,
+    `page` longblob not null,
+    `digest` char(48) unique not null,
+    `idate` datetime default now(),
+    primary key (`id`)
+);
